@@ -1,6 +1,7 @@
 # KGenerator
 
 ## 1.关于KGenerator
+- java程序员可以非常灵活的玩坏这个项目;
 - 数据库反向生成工具，用于生成常用的Dao、DaoImpl、Entity、xml等文件；
 - 基于freemarker模板生成文件，高度灵活定义文件和扩展文件；
 - 可设定数据库表的范围，包括全表扫描，指定表扫描，正则扫描；

@@ -1,0 +1,30 @@
+package ${params.package}.modules.${tableName?uncap_first}.model;
+
+import java.io.Serializable;
+import lombok.Data;
+import org.apache.ibatis.type.Alias;
+<#list importPackages as importPackage>
+import ${importPackage};
+</#list>
+
+/**
+* @Date: ${formatterTime}
+* @Author: ${params.author}
+* @Description: ${tableRemark} 实体类
+*/
+@Data
+@Alias("${tableName}Model")
+public class ${tableName}Model implements Serializable {
+	private static final long serialVersionUID = 1L;
+	
+	<#list columns as column>
+    //${column.columnRemark}
+	private ${column.typeName} ${column.columnName};
+	
+	</#list>
+	@Override
+	public String toString() {
+		<#assign sign=false>
+		return "${tableName}Model [<#list columns as column><#if sign>,</#if>${column.columnName}=" + ${column.columnName} + "<#assign sign=true></#list>]";
+	}
+}

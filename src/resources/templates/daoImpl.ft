@@ -1,0 +1,30 @@
+package ${params.package}.modules.${tableName?uncap_first}.dao.impl;
+
+import ${params.package}.modules.${tableName?uncap_first}.dao.${tableName}Dao;
+import ${params.package}.modules.${tableName?uncap_first}.model.${tableName}Model;
+import java.util.List;
+import ${params.package}.commons.BaseDao;
+import org.springframework.stereotype.Repository;
+
+/**
+* @Date: ${formatterTime}
+* @Author: ${params.author}
+* @Description: ${tableRemark} Dao层实现
+*/
+@Repository
+public class ${tableName}DaoImpl extends BaseDao implements ${tableName}Dao {
+    @Override
+    public List<${tableName}Model> queryList(${tableName}Model ${tableName?uncap_first}) {
+        return super.queryList("${params.package}.modules.${tableName?uncap_first}.dao.${tableName}Mapper.queryList", ${tableName?uncap_first});
+    }
+
+    @Override
+    public int insert(${tableName}Model ${tableName?uncap_first}) {
+        return super.insert("${params.package}.modules.${tableName?uncap_first}.dao.${tableName}Mapper.insert", ${tableName?uncap_first});
+    }
+
+    @Override
+    public int update(${tableName}Model ${tableName?uncap_first}) {
+        return super.update("${params.package}.modules.${tableName?uncap_first}.dao.${tableName}Mapper.update", ${tableName?uncap_first});
+    }
+}

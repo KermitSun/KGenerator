@@ -1,0 +1,50 @@
+{
+  "params": {
+    "package": "com.kermit",
+    "author": "Kermit Sun",
+    "timeFormatter": "hh:MM yyyy/MM/dd"
+  },
+  "db": {
+    "driver": "com.mysql.cj.jdbc.Driver",
+    "url": "jdbc:mysql://localhost:3306/test",
+    "username": "dev",
+    "password": "dev",
+    "catalog": null,
+    "schemaPattern": "test",
+    "tableNamePattern": null,
+    "types": ["TABLE"],
+    "tables": ["t_user"]
+  },
+  "export": {
+    "outPath": "E:/KGenerator/",
+    "clearDirs": true,
+    "items": [
+      {
+        "outPath": "${tableName}/dao/",
+        "templateName": "dao.ft",
+        "fileName": "${tableName}Dao.java"
+      },{
+        "outPath": "${tableName}/dao/impl/",
+        "templateName": "daoImpl.ft",
+        "fileName": "${tableName}DaoImpl.java"
+      },{
+        "outPath": "${tableName}/mapper/",
+        "templateName": "mapper.ft",
+        "fileName": "${tableName}Mapper.xml"
+      },{
+        "outPath": "${tableName}/model/",
+        "templateName": "model.ft",
+        "fileName": "${tableName}Model.java"
+      }
+     /* }{
+        "outPath": "${tableName}/service/",
+        "templateName": "service.ft",
+        "fileName": "${tableName}Service.java"
+      },{
+        "outPath": "${tableName}/service/impl/",
+        "templateName": "serviceImpl.ft",
+        "fileName": "${tableName}ServiceImpl.java"
+      }*/
+    ]
+  }
+}

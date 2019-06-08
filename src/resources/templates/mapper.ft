@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="${params.package}.modules.${tableName?uncap_first}.dao.${tableName}Mapper">
+    <sql id="column_params">
+        <#assign sign=false>
+        <#list columns as column><#if sign>,</#if>${column.dbColumnName}<#assign sign=true></#list>
+    </sql>
+
+    <sql id="query_params">
+        <where>
+            1 = 1
+            <#list columns as column>
+                <#if column.typeName == "String">
+                    <if test="${column.columnName} != null and ${column.columnName}.trim().length() > 0">
+                        AND ${column.dbColumnName} = ${"#"}{${column.columnName}}
+                    </if>
+                <#elseif column.typeName == "Long" || column.typeName == "Integer">
+                    <if test="${column.columnName} != null and ${column.columnName} != -1">
+                        AND ${column.dbColumnName} = ${"#"}{${column.columnName}}
+                    </if>
+                <#else>
+                    <if test="${column.columnName} != null">
+                        AND ${column.dbColumnName} = ${"#"}{${column.columnName}}
+                    </if>
+                </#if>
+            </#list>
+        </where>
+    </sql>
+
+    <select id="queryList" resultType="${tableName}Model" parameterType="${tableName}Model">
+        SELECT
+            <include refid="column"/>
+        FROM ${dbTableName}
+            <include refid="query"/>
+    </select>
+
+    <insert id="insert" parameterType="${tableName}Model">
+        INSERT INTO ${dbTableName}
+            (<include refid="column"/>)
+        VALUES
+            (<#assign sign=false><#list columns as column><#if sign>,</#if>${"#"}{${column.columnName}}<#assign sign=true></#list>)
+    </insert>
+    <update id="update" parameterType="${tableName}Model">
+        UPDATE ${tableName}
+        <set>
+            <#list columns as column>
+                <if test="${column.columnName} != null">
+                    AND ${column.dbColumnName} = ${"#"}{${column.columnName}}
+                </if>
+            </#list>
+        </set>
+        WHERE
+            1 = 1
+            <#list primarys as primary>
+            AND ${primary.dbColumnName} = ${"#"}{${primary.columnName}}
+            </#list>
+    </update>
+</mapper>

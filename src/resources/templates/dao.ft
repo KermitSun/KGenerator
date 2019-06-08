@@ -1,0 +1,32 @@
+package ${params.package}.modules.${tableName?uncap_first}.dao;
+
+import java.util.List;
+import ${params.package}.modules.${tableName?uncap_first}.model.${tableName}Model;
+
+/**
+* @Date: ${formatterTime}
+* @Author: ${params.author}
+* @Description: ${tableRemark} Dao层
+*/
+public interface ${tableName}Dao{
+    /**
+    * @Date: ${formatterTime}
+    * @Author: ${params.author}
+    * @Description: 查询列表
+    */
+    List<${tableName}Model> queryList(${tableName}Model ${tableName?uncap_first});
+
+    /**
+    * @Date: ${formatterTime}
+    * @Author: ${params.author}
+    * @Description: 插入
+    */
+    int insert(${tableName}Model ${tableName?uncap_first});
+
+    /**
+    * @Date: ${formatterTime}
+    * @Author: ${params.author}
+    * @Description: 更新
+    */
+    int update(${tableName}Model ${tableName?uncap_first});
+}

@@ -36,15 +36,6 @@
         "templateName": "model.ft",
         "fileName": "${tableName}Model.java"
       }
-     /* }{
-        "outPath": "${tableName}/service/",
-        "templateName": "service.ft",
-        "fileName": "${tableName}Service.java"
-      },{
-        "outPath": "${tableName}/service/impl/",
-        "templateName": "serviceImpl.ft",
-        "fileName": "${tableName}ServiceImpl.java"
-      }*/
     ]
   }
 }

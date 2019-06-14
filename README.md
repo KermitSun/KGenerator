@@ -15,6 +15,13 @@
 - 运行Main类主方法，如正常输出"Build config XXX success!"，则表示无异常；
     
 ## 3.简单使用
+1. 打开resources/config/config_test.json
+2. 修改json中db下的driver、url、username、password为自己的库；
+3. 在db下的tables中写入需要生成的表名数组；
+4. 执行java包下的Main方法，将在E:/KGenerator/下生成对应的dao、mapper、entity等文件；
+5. 再次修改db下的tables，将其指定为空的数组[];
+6. 执行Main方法，将生成该库下所有的表的文件；
+
 通过修改config.json和xxx.json文件可实现基本的反向生成；
 - /resources/config中，通过"configs"指定需要扫描的配置文件集合，每个配置文件应对应一个数据库连接；
 - /resources/config_test.json中是示例配置，其中主要结构有三方面内容:params,db,export;
@@ -67,6 +74,7 @@ transaction包中定义了一些常用的数据库与文件中所需内容的转
 - 关于一些表字段特殊后缀，如status，生成Enum类，transaction中定义后缀和需要生成的tf文件(不只是Enum了)；
 - 数据库字段转化成实体类时候，对长度进行判断，int(4)和int(10)可转成int和long两种类型；
 - 添加常用service、serviceImpl、vo、bo、qo、controller等类型tf；
+- 目前只支持执行Main方法一种方式，可加上另一种方式，首先运行会生成一个json的配置文件，里边有对应每张表的设置，之后用户可以再次将配置文件导入，生成实体文件，在两次操作之间，用户可定义一些更灵活的设置；
 
 ## 8.我的联系方式
     微信：gutianqingyue 

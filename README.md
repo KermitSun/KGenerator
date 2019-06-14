@@ -22,6 +22,8 @@
 5. 再次修改db下的tables，将其指定为空的数组[];
 6. 执行Main方法，将生成该库下所有的表的文件；
 
+> 以下是刚刚生效方法的讲解：
+
 通过修改config.json和xxx.json文件可实现基本的反向生成；
 - /resources/config中，通过"configs"指定需要扫描的配置文件集合，每个配置文件应对应一个数据库连接；
 - /resources/config_test.json中是示例配置，其中主要结构有三方面内容:params,db,export;
